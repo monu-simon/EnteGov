@@ -6,8 +6,8 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { Container } from 'react-bootstrap';
 import Home from './components/Home/Home';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
+import UserProfile from './components/UserProfile/UserProfile';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         <Container className="py-4">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/profile/:mpsno" element={<UserProfile />} />
           </Routes>
         </Container>
         <Footer />

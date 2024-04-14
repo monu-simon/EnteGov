@@ -1,5 +1,6 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import { Link } from 'react-router-dom';
 
 function MemberDetails({ members }) {
     console.log(members)
@@ -20,6 +21,9 @@ function MemberDetails({ members }) {
                 {members.map((member, index) => (
                     <tr key={index}>
                         <td>{member.mpsno}</td>
+                        <td>
+                            <Link to={`/profile/${member.mpsno}`}>{`${member.initial} ${member.firstName} ${member.lastName}`}</Link>
+                        </td>
                         <td>{`${member.initial} ${member.firstName} ${member.lastName}`}</td>
                         <td>{`${member.partyFname} (${member.partySname})`}</td>
                         <td>{member.stateName}</td>
