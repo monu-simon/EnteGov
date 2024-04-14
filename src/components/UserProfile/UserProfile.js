@@ -7,6 +7,7 @@ import UserProfileCard from '../UserProfileCard/UserProfileCard';
 const UserProfile = () => {
     const { mpsno } = useParams();
     const [memberDetails, setMemberDetails] = useState(null);
+    const [mpFund, setMpFundDetails] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -20,7 +21,17 @@ const UserProfile = () => {
             }
         };
 
+        const fetchMpFund = async () => {
+            try {
+                const response = await axios.get(`/api/mpfund?id=${mpsno}`);
+                setMpFundDetails(response.data);
+            } catch (error) {
+
+            }
+        }
+
         fetchMemberDetails();
+        fetchMpFund();
     }, [mpsno])
 
     if (loading) {
