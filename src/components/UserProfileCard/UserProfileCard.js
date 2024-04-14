@@ -23,7 +23,7 @@ const UserProfileCard = ({ memberDetails }) => {
         return () => {
             URL.revokeObjectURL(imageSrc);
         };
-    })
+    },[memberDetails.mpsno])
 
     return (
         <div className="card mx-auto mt-5" style={{ width: '18rem' }}>
