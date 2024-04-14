@@ -39,7 +39,7 @@ function Home() {
 
     return (
         <div>
-            <h1>Member Details</h1>
+            <h1>Lok Sabha Member Details</h1>
             <Container fluid>
                 <Row>
                     <Col md={12}>
