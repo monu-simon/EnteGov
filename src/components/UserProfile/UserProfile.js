@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import UserProfileCard from '../UserProfileCard/UserProfileCard';
 
-const UserProfile = ( ) => {
+const UserProfile = () => {
 
     const { mpsno } = useParams();
     const [memberDetails, setMemberDetails] = useState(null);
@@ -28,7 +29,12 @@ const UserProfile = ( ) => {
     }
 
     return (
-        <div>UserProfile</div>
+        <div className='container'>
+            <div className='row justify-content-center'>
+                {memberDetails && <UserProfileCard memberDetails={memberDetails} />}
+
+            </div>
+        </div> 
     )
 }
 
