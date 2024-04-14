@@ -24,7 +24,7 @@ const UserProfile = () => {
 
         const fetchMpFund = async () => {
             try {
-                const response = await axios.get(`/api/mpfund?id=${mpsno}`);
+                const response = await axios.get(`/api/mpFundDetails?id=${mpsno}`);
                 setMpFundDetails(response.data);
             } catch (error) {
 

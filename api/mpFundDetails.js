@@ -1,4 +1,4 @@
-// api/mpfund.js
+// api/mpFundDetails.js
 
 const axios = require('axios');
 

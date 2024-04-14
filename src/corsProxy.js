@@ -39,7 +39,7 @@ app.get('/api/memberDetails', async (req, res) => {
   }
 });
 
-app.get('/api/mpfund', async (req, res) => {
+app.get('/api/mpFundDetails', async (req, res) => {
   const memberId = req.query.id;
   try {
       const response = await axios.get(`https://sansad.in/api_poi/cons-connect/mplad/mp-fund?mpCode=${memberId}&house=ls`);
