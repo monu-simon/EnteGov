@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import UserProfileCard from '../UserProfileCard/UserProfileCard';
+import HorizontalBarGraph from '../HorizontalBarGraph/HorizontalBarGraph';
 
 const UserProfile = () => {
     const { mpsno } = useParams();
@@ -57,6 +58,10 @@ const UserProfile = () => {
                         </Card.Body>
                     </Card>
                 </Col>
+            </Row>
+            <Row>
+
+            {mpFund && <HorizontalBarGraph data={mpFund}/>}
             </Row>
         </Container>
     )
