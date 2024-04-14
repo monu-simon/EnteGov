@@ -14,12 +14,14 @@ function App() {
     <Router>
       <div>
         <Header />
-        <Container className="py-4">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile/:mpsno" element={<UserProfile />} />
-          </Routes>
-        </Container>
+        <div className='background-pattern'>
+          <Container className="py-4">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile/:mpsno" element={<UserProfile />} />
+            </Routes>
+          </Container>
+        </div>
         <Footer />
       </div>
     </Router>
