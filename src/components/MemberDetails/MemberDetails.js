@@ -8,7 +8,6 @@ function MemberDetails({ members }) {
         <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>MPS No</th>
                     <th>Name</th>
                     <th>Party</th>
                     <th>State</th>
@@ -20,7 +19,6 @@ function MemberDetails({ members }) {
             <tbody>
                 {members.map((member, index) => (
                     <tr key={index}>
-                        <td>{member.mpsno}</td>
                         <td>
                             <Link to={`/profile/${member.mpsno}`}>{`${member.initial} ${member.firstName} ${member.lastName}`}</Link>
                         </td>
