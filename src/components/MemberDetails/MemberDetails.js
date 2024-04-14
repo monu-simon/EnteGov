@@ -22,7 +22,6 @@ function MemberDetails({ members }) {
                         <td>
                             <Link to={`/profile/${member.mpsno}`}>{`${member.initial} ${member.firstName} ${member.lastName}`}</Link>
                         </td>
-                        <td>{`${member.initial} ${member.firstName} ${member.lastName}`}</td>
                         <td>{`${member.partyFname} (${member.partySname})`}</td>
                         <td>{member.stateName}</td>
                         <td>{member.constName}</td>
