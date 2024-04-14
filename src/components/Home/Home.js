@@ -14,7 +14,7 @@ function Home() {
             setMembers(response.data.membersDtoList)
         };
 
-        fetchMembers();
+        fetchMembers(); 
         
     }, []);
 
