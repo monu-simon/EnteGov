@@ -26,7 +26,7 @@ const UserProfileCard = ({ memberDetails }) => {
     },[memberDetails.mpsno])
 
     return (
-        <div className="card mx-auto mt-5" style={{ width: '18rem' }}>
+        <div className="card border-0 mx-auto" style={{ width: '18rem' }}>
             <img
                 src={imageSrc}
                 className="card-img-top rounded-circle"

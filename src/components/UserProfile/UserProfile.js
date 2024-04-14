@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 import UserProfileCard from '../UserProfileCard/UserProfileCard';
 
 const UserProfile = () => {
-
     const { mpsno } = useParams();
     const [memberDetails, setMemberDetails] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -21,7 +21,6 @@ const UserProfile = () => {
         };
 
         fetchMemberDetails();
-
     }, [mpsno])
 
     if (loading) {
@@ -29,13 +28,27 @@ const UserProfile = () => {
     }
 
     return (
-        <div className='container'>
-            <div className='row justify-content-center'>
-                {memberDetails && <UserProfileCard memberDetails={memberDetails} />}
-
-            </div>
-        </div> 
+        <Container className='mt-5'>
+            <Row className='justify-content-center'>
+                <Col md={6}>
+                    {memberDetails && <UserProfileCard memberDetails={memberDetails} />}
+                </Col>
+                <Col md={6}>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>Additional Information</Card.Title><br />
+                            <Card.Text>
+                                <strong>Country Visited:</strong> {memberDetails.countriesVisited}<br /><br />
+                                <strong>Education:</strong> <span dangerouslySetInnerHTML={{ __html: memberDetails.education }}/> <br /><br />
+                                <strong>Social Activities:</strong> <span dangerouslySetInnerHTML={{ __html: memberDetails.social }}/><br /><br />
+                                <strong>Other Info:</strong> <span dangerouslySetInnerHTML={{ __html: memberDetails.otherInfo }} />
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
-export default UserProfile
+export default UserProfile;
