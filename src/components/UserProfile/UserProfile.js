@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import UserProfileCard from '../UserProfileCard/UserProfileCard';
 import HorizontalBarGraph from '../HorizontalBarGraph/HorizontalBarGraph';
+import DebateTable from '../DebateTable/DebateTable';
 
 const UserProfile = () => {
     const { mpsno } = useParams();
     const [memberDetails, setMemberDetails] = useState(null);
     const [mpFund, setMpFundDetails] = useState(null);
+    const [debates, setDebates] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -31,8 +33,18 @@ const UserProfile = () => {
             }
         }
 
+        const fetchDebates = async () => {
+            try {
+                const response = await axios.get(`/api/getDebates?id=${mpsno}`);
+                setDebates(response.data.records);
+            } catch (error) {
+
+            }
+        }
+
         fetchMemberDetails();
         fetchMpFund();
+        fetchDebates();
     }, [mpsno])
 
     if (loading) {
@@ -62,6 +74,11 @@ const UserProfile = () => {
             <Row>
 
             {mpFund && <HorizontalBarGraph data={mpFund}/>}
+            </Row>
+
+            <h3>Debates</h3>
+            <Row style={{height: '500px', overflow: 'auto'}}>
+                {debates && <DebateTable records={debates}/>}
             </Row>
         </Container>
     )
