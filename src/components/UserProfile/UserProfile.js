@@ -77,9 +77,9 @@ const UserProfile = () => {
             </Row>
 
             <h3>Debates</h3>
-            {/* <Row style={{height: '500px', overflow: 'auto'}}>
+            <Row style={{height: '500px', overflow: 'auto'}}>
                 {debates && <DebateTable records={debates}/>}
-            </Row> */}
+            </Row>
         </Container>
     )
 }
