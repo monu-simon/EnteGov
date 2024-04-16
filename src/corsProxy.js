@@ -28,6 +28,26 @@ app.get('/api/data', async (req, res) => {
   }
 });
 
+app.get('/api/party', async (req, res) => {
+  try {
+    // Make a GET request to the external API
+    const response = await axios.get('https://sansad.in/api_ls/member/partyWiseRepresentation', {
+      params: {
+        loksabha: 17,
+        locale: 'en'
+        // Add other query parameters as needed
+      }
+    });
+
+    // Return the response data to the client
+    res.json(response.data);
+  } catch (error) {
+    // Handle errors
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 app.get('/api/memberDetails', async (req, res) => {
   const memberId = req.query.id;
   try {
