@@ -103,7 +103,7 @@ const Party = () => {
                     </div>
                 </div>
                 <h2 className="mb-4">Statistical  Information</h2>
-                <div className="table-responsive">
+                <div className="table-responsive" style={{height: '500px'}}>
                     <table className="table table-striped">
                         <thead>
                             <tr>
