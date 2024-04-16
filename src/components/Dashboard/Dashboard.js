@@ -7,7 +7,9 @@ const Dashboard = () => {
             <div className="text-center">
                 <h1 className="font-weight-bold">Election Fever Grips</h1>
                 <h2 style={{ 'fontFamily': "Pacifico", 'fontSize': 'xx-large', 'color': 'black' }} >Get Ready for the World's Largest Democracy</h2>
-                <Link to="/members" className="btn btn-primary mt-3">Know Your MPs</Link>
+                <Link to="/party" className="btn btn-primary mt-3">Current Statistics</Link>
+                <span> </span>
+                <Link to="/members" className="btn btn-primary mt-3">Know Your MP's</Link>
             </div>
         </div>
     )
