@@ -51,55 +51,55 @@ app.get('/api/party', async (req, res) => {
 app.get('/api/memberDetails', async (req, res) => {
   const memberId = req.query.id;
   try {
-      const response = await axios.get(`https://sansad.in/api_ls/member/${memberId}`);
-      res.status(200).json(response.data);
+    const response = await axios.get(`https://sansad.in/api_ls/member/${memberId}`);
+    res.status(200).json(response.data);
   } catch (error) {
-      console.error('Error:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 app.get('/api/mpFundDetails', async (req, res) => {
   const memberId = req.query.id;
   try {
-      const response = await axios.get(`https://sansad.in/api_poi/cons-connect/mplad/mp-fund?mpCode=${memberId}&house=ls`);
-      res.status(200).json(response.data);
+    const response = await axios.get(`https://sansad.in/api_poi/cons-connect/mplad/mp-fund?mpCode=${memberId}&house=ls`);
+    res.status(200).json(response.data);
   } catch (error) {
-      console.error('Error:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 app.get('/api/getDebates', async (req, res) => {
   const memberId = req.query.id;
   try {
-      const response = await axios.get(`https://sansad.in/api_ls/debate/debate-search?debateTypeId=&loksabha=17&sessionNumber=&fromDate=&toDate=&searchKeyword=&page=1&size=10&mpCode=${memberId}&sortBy&sortOrder`);
-      res.status(200).json(response.data);
+    const response = await axios.get(`https://sansad.in/api_ls/debate/debate-search?debateTypeId=&loksabha=17&sessionNumber=&fromDate=&toDate=&searchKeyword=&page=1&size=10&mpCode=${memberId}&sortBy&sortOrder`);
+    res.status(200).json(response.data);
   } catch (error) {
-      console.error('Error:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 app.get('/api/getImage', async (req, res) => {
   try {
-      const mpsno = req.query.mpsno;
-      if (!mpsno) {
-          return res.status(400).json({ error: 'MPS number (mpsno) is required' });
-      }
+    const mpsno = req.query.mpsno;
+    if (!mpsno) {
+      return res.status(400).json({ error: 'MPS number (mpsno) is required' });
+    }
 
-      const imageUrl = `https://sansad.in/getFile/mpimage/photo/${mpsno}.jpg?source=loksabhadocs`;
+    const imageUrl = `https://sansad.in/getFile/mpimage/photo/${mpsno}.jpg?source=loksabhadocs`;
 
-      const response = await axios.get(imageUrl, {
-          responseType: 'arraybuffer'
-      });
+    const response = await axios.get(imageUrl, {
+      responseType: 'arraybuffer'
+    });
 
-      const contentType = response.headers['content-type'];
-      res.setHeader('Content-Type', contentType);
-      res.send(response.data);
+    const contentType = response.headers['content-type'];
+    res.setHeader('Content-Type', contentType);
+    res.send(response.data);
   } catch (error) {
-      console.error('Error fetching image:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error fetching image:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

@@ -3,15 +3,17 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import MemberDetails from '../MemberDetails/MemberDetails';
 import { Col, Container, Form, Row } from 'react-bootstrap';
+import { useLoading } from '../Context/LoadingContext';
 
 function Home() {
     const [members, setMembers] = useState([]);
     const [states, setStates] = useState([]);
     const [filteredMembers, setFilteredMembers] = useState([]);
     const [selectedState, setSelectedState] = useState('');
+    const { toggleLoading } = useLoading();
 
     useEffect(() => {
-
+        toggleLoading(true);
         const fetchMembers = async () => {
             const apiUrl = '/api/data';
             const response = await axios.get(apiUrl);
@@ -20,6 +22,7 @@ function Home() {
             const uniqueStates = [...new Set(response.data.membersDtoList.map(member => member.stateName.trim()))];
             setStates(uniqueStates);
             console.log(uniqueStates)
+            toggleLoading(false)
         };
 
         fetchMembers();

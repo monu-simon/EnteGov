@@ -1,19 +1,24 @@
 import axios from 'axios';
 import { Chart } from 'chart.js';
 import React, { useEffect, useState } from 'react';
+import { useLoading } from '../Context/LoadingContext';
 
 const Party = () => {
     const [parties, setParties] = useState([]);
     const [total, setTotal] = useState(0);
+    const {toggleLoading} = useLoading();
 
     useEffect(() => {
+        toggleLoading(true);
         const fetchData = async () => {
             try {
                 const response = await axios.get('/api/party');
                 const sortedParties = response.data.sort((a, b) => b.count - a.count);
                 setParties(sortedParties);
+                toggleLoading(false);
             } catch (error) {
                 console.error('Error fetching party data:', error);
+                toggleLoading(false);
             }
         };
 
